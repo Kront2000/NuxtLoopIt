@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+    --color-backround: rgba(2, 6, 24, 1);
+
+    --font-roobert: 'Roobert', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
+
+body {
+    @apply font-inter;
+}
