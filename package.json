@@ -1,0 +1,36 @@
+{
+  "name": "LoopIt3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "NODE_OPTIONS=\"--dns-result-order=ipv4first\" nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.4.6",
+    "@iconify-json/lucide": "^1.2.108",
+    "@iconify-json/simple-icons": "^1.2.83",
+    "@internationalized/date": "^3.12.2",
+    "@nuxt/image": "2.0.0",
+    "@nuxt/ui": "^4.7.1",
+    "@nuxthub/core": "0.10.7",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
+    "nuxt": "^4.4.6",
+    "nuxt-auth-utils": "0.5.29",
+    "postgres": "^3.4.9",
+    "tailwindcss": "^4.3.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "eslint": "^10.4.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.0"
+  },
+  "packageManager": "pnpm@11.1.3"
+}
