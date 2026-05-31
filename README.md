@@ -1,64 +1,79 @@
-# Nuxt Starter Template
+# О проекте: LoopIt — Управление задачами на основе событий
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+# ПРОЕКТ В РАЗРАБОТКЕ!!!
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+Управление задачами, вдохновленная работой event loop.
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+Проект сфокусирован на современной экосистеме Nuxt, строгой типизации, безопасности пользовательских сессий и интеграции с базой данных через легковесную ORM.
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
+## 🛠 Технологический стек и зависимости
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+* **Фреймворк:** Nuxt 4 / Vue 3 (Composition API)
+* **Язык:** TypeScript
+* **UI & Стилизация:** Tailwind CSS, @nuxt/ui 
+* **База данных & Бэкенд:** PostgreSQL (через @nuxthub/core) 
+* **ORM:** Drizzle ORM 
+* **Аутентификация:** nuxt-auth-utils 
+* **Валидация данных:** Zod 
+* **Работа с изображениями:** @nuxt/image 
+* **Линтинг:** @nuxt/eslint 
 
-## Quick Start
+## ✨ Реализованный функционал (на данный момент)
 
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
-```
+1. **Главная страница (Landing):**
+    * Сверстана приветственная секция с плавной анимацией появления элементов при скролле (Intersection Observer через кастомный хук `useIO`).
+    * Кастомные фоновые абстрактные элементы (Background blobs).
+2. **Аутентификация и сессии:**
+    * Реализованы страницы входа (`/login`) и регистрации (`/registration`).
+    * Валидация форм на клиенте и сервере с помощью Zod-схем (`loginSchema`, `regisSchema`).
+    * Хеширование паролей и безопасное управление сессиями через `nuxt-auth-utils`.
+3. **Рабочее пространство (Loop):**
+    * Доска с колонками по типу задач: "Стек задач", "Макрозадачи", "Микрозадачи", "API".
+    * Защита роута middleware-функцией (`authenticated`), перенаправляющей неавторизованных пользователей на страницу входа.
+    * Боковое меню с возможностью выхода из аккаунта (Logout) и создания новых задач.
+4. **Управление задачами (CRUD API):**
+    * Модальное окно создания задачи с выбором типа и описанием.
+    * Серверные эндпоинты (`/api/tasks`) для безопасного получения списка задач пользователя и добавления новых записей в БД.
+5. **База данных:**
+    * Спроектирована реляционная схема БД: таблицы `users` и `tasks` с настроенными связями (один-ко-многим).
 
-## Deploy your own
+## 📁 Структура проекта
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
+Проект организован по стандартам Nuxt:
 
-## Setup
+* `/app/components/` — Переиспользуемые UI-компоненты и блоки, разделенные по доменам (`Home`, `Loop`, `shared`).
+* `/app/composables/` — Изолированная логика (например, `useIO.ts` для Intersection Observer).
+* `/app/pages/` — Файловый роутинг страниц (`index.vue`, `login.vue`, `registration.vue`, `loop.vue`).
+* `/server/api/` — Серверные роуты (BFF) для авторизации и управления задачами.
+* `/server/db/` — Схемы таблиц базы данных и отношения (Drizzle).
+* `/shared/types/` — Глобальные интерфейсы TypeScript и Zod-схемы валидации.
 
-Make sure to install the dependencies:
+## 🚀 Запуск проекта
 
+### 1. Клонируйте репозиторий:
 ```bash
-pnpm install
+git clone https://github.com/Kront2000/NuxtLoopIt
+cd loopit
 ```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+### 2. Установите зависимости:
+```bash
+npm install
+```
+### 3. создайте файл .env:
+```bash
+NUXT_SESSION_PASSWORD=
+DATABASE_URL=
+```
+### 4. Создайте миграцию базы данных:
+```bash
+npx nuxt db generate
+```
+### 5. Запустите:
 ```bash
 pnpm dev
 ```
 
-## Production
+## 📈 Планы на будущее
+- дописать
 
-Build the application for production:
 
-```bash
-pnpm build
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Renovate integration
-
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
